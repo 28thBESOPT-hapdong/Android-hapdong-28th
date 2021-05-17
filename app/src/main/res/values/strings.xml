@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Android-hapdong-28th</string>
+    <string name="main_tab1">추천</string>
+    <string name="main_tab2">얼리버드</string>
+    <string name="main_tab3">기획전</string>
+    <string name="main_tab4">HOT</string>
+    <string name="main_tab5">NEW</string>
 </resources>
