@@ -20,17 +20,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         configureBottomNav()
+        navigateHome()
     }
 
     private fun configureBottomNav() {
-        binding.bottomNavi.setOnNavigationItemReselectedListener {
+        binding.bottomNavi.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> navigateHome()
                 R.id.menu_search -> navigateSearch()
             }
+            true
         }
     }
 
-    private fun navigateHome() {}
-    private fun navigateSearch() {}
+    private fun navigateHome() {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, homeFragment)
+        transaction.commit()
+    }
+
+    private fun navigateSearch() {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, searchFragment)
+        transaction.commit()
+    }
 }
