@@ -17,11 +17,11 @@
 
     <item
         android:id="@+id/menu_goal"
-        android:icon="@drawable/search_24_px"
+        android:icon="@drawable/frame_55"
         android:title="성공임박" />
 
     <item
         android:id="@+id/menu_plus"
-        android:icon="@drawable/search_24_px"
+        android:icon="@drawable/icon_plus_24_px"
         android:title="더보기" />
 </menu>
