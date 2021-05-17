@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/home_24_px"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/search_24_px"
+        android:title="둘러보기" />
+
+    <item
+        android:id="@+id/menu_heart"
+        android:icon="@drawable/heart_24_px"
+        android:title="좋아한" />
+
+    <item
+        android:id="@+id/menu_goal"
+        android:icon="@drawable/search_24_px"
+        android:title="성공임박" />
+
+    <item
+        android:id="@+id/menu_plus"
+        android:icon="@drawable/search_24_px"
+        android:title="더보기" />
+</menu>
