@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Android-hapdong-28th</string>
+    <string name="search">둘러보기</string>
+    <string name="category">카테고리</string>
+    <string name="rate">달성률</string>
+    <string name="project">공계예정 프로젝트</string>
+    <string name="pick">에디터픽</string>
+    <string name="project_cnt">282개의 프로젝트가 있습니다</string>
+    <string name="newest">최신순</string>
+    <string name="item_name">호감가는 대화의 비밀, 한 알로 가볍게 챙기는 숨결케어</string>
+    <string name="item_tag">잡화 | Stasty</string>
+    <string name="item_disc">[식약처인증/구취감소 98%] 씹을수록 상쾌한 데일리 덴탈케어, 환경까지 챙긴 순수 성분!</string>
+    <string name="item_cost">968,000원</string>
+    <string name="item_percent">72%</string>
+    <string name="item_day">12일 남음</string>
     <string name="main_tab1">추천</string>
     <string name="main_tab2">얼리버드</string>
     <string name="main_tab3">기획전</string>
