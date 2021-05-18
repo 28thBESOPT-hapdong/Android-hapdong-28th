@@ -5,7 +5,8 @@
     <string name="rate">달성률</string>
     <string name="project">공계예정 프로젝트</string>
     <string name="pick">에디터픽</string>
-    <string name="project_cnt">282개의 프로젝트가 있습니다</string>
+    <string name="project_cnt">282</string>
+    <string name="project_cnt_msg">개의 프로젝트가 있습니다</string>
     <string name="newest">최신순</string>
     <string name="item_name">호감가는 대화의 비밀, 한 알로 가볍게 챙기는 숨결케어</string>
     <string name="item_tag">잡화 | Stasty</string>
@@ -20,4 +21,5 @@
     <string name="main_tab5">NEW</string>
     <string name="banner_size">/ 4</string>
     <string name="project_count">개의 프로젝트</string>
+    <string name="days_left">일 남음</string>
 </resources>

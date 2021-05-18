@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"/>
 
         <TextView
@@ -171,8 +171,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/group_70"
-            app:layout_constraintTop_toBottomOf = "@id/iv_search_bar"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf ="@id/iv_search_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="1dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -183,7 +184,7 @@
         android:background="@color/gray_b2"
         android:layout_gravity="center"
         app:layout_constraintTop_toBottomOf="@id/cv_search_top_bar"
-        android:layout_marginTop="7dp"/>
+        android:layout_marginTop="2dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cv_search_bottom_bar"
@@ -191,7 +192,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/divider_line"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingTop="14dp">
+        android:paddingTop="17dp">
 
         <TextView
             android:id="@+id/tv_project_cnt"
@@ -201,6 +202,17 @@
             app:layout_constraintTop_toTopOf= "parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="11dp"
+            android:textSize="13sp"
+            android:textColor="@color/red_orange"
+            />
+
+        <TextView
+            android:id="@+id/tv_project_cnt_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/project_cnt_msg"
+            app:layout_constraintTop_toTopOf= "@id/tv_project_cnt"
+            app:layout_constraintStart_toEndOf="@id/tv_project_cnt"
             android:textSize="13sp"
             />
 
@@ -218,7 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/newest"
-            app:layout_constraintTop_toTopOf= "parent"
+            app:layout_constraintTop_toTopOf= "@id/iv_list"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="11dp"
             android:textSize="13sp"
@@ -228,7 +240,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_item_list"
+        android:id="@+id/rv_search_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -236,6 +248,7 @@
         tools:listitem="@layout/item_search"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:paddingHorizontal="11dp"
+        android:layout_marginTop="17dp"
         />
 
 
