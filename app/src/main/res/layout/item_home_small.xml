@@ -42,10 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:fontFamily="@font/notosans_regular"
+        android:text="여자 셋이 만든&lt;노브라 티셔츠&gt; 숨통이 트이는 '숨통티'"
         android:textSize="13sp"
         app:layout_constraintLeft_toLeftOf="@id/small_category"
         app:layout_constraintTop_toBottomOf="@id/small_category"
-        tools:text="여자 셋이 만든 <노브라 티셔츠>\n숨통이 트이는 '숨통티'" />
+        tools:text="여자 셋이 만든 &lt;노브라 티셔츠&gt;\n숨통이 트이는 '숨통티'" />
 
     <TextView
         android:id="@+id/small_goal"
