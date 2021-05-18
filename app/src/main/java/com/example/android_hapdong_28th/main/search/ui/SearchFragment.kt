@@ -1,11 +1,15 @@
 package com.example.android_hapdong_28th.main.search.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import com.example.android_hapdong_28th.R
 import com.example.android_hapdong_28th.databinding.FragmentSearchBinding
+import com.example.android_hapdong_28th.main.MainActivity
 import com.example.android_hapdong_28th.main.search.adapter.SearchListAdapter
 import com.example.android_hapdong_28th.main.search.data.SearchItemInfo
 
@@ -26,6 +30,11 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val result = arguments?.getString("from").toString()
+        setButtonText(result)
+
+        navigateHomeFromSearch()
 
         searchListAdapter = SearchListAdapter()
 
@@ -64,6 +73,22 @@ class SearchFragment : Fragment() {
         )
         searchListAdapter.notifyDataSetChanged()
 
+    }
+
+    private fun setButtonText(from: String) {
+        Log.d("tag1", from)
+        when (from) {
+            "menu" -> binding.btnProject.visibility = View.GONE
+            "title1" -> binding.btnProject.text = getString(R.string.home_title1)
+            "title2" -> binding.btnProject.text = getString(R.string.home_title2)
+            "title3" -> binding.btnProject.text = getString(R.string.home_title3)
+        }
+    }
+
+    private fun navigateHomeFromSearch() {
+        binding.ivArrow.setOnClickListener {
+            (activity as MainActivity).navigateHome()
+        }
     }
 
     override fun onDestroyView() {
