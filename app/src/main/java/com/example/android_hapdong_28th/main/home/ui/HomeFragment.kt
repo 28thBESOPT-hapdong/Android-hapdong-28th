@@ -9,11 +9,12 @@ import android.widget.TextView
 import androidx.core.widget.TextViewCompat
 import com.example.android_hapdong_28th.R
 import com.example.android_hapdong_28th.databinding.FragmentHomeBinding
+import com.example.android_hapdong_28th.main.MainActivity
 import com.example.android_hapdong_28th.main.home.adapter.BannerPagerAdapter
 import com.example.android_hapdong_28th.main.home.data.BannerData
 import com.google.android.material.tabs.TabLayout
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
@@ -32,6 +33,7 @@ class HomeFragment : Fragment() {
 
         configureTab()
         configureMainBanner()
+        configureNavigation()
     }
 
     private fun configureTab() {
@@ -64,6 +66,26 @@ class HomeFragment : Fragment() {
     private fun configureMainBanner() {
         bannerPagerAdapter = BannerPagerAdapter(bannerList)
         binding.banner.adapter = bannerPagerAdapter
+    }
+
+    private fun configureNavigation() {
+        binding.homeTitle1.setOnClickListener { onClick(it) }
+        binding.homeBtn1.setOnClickListener { onClick(it) }
+        binding.homeTitle2.setOnClickListener { onClick(it) }
+        binding.homeBtn2.setOnClickListener { onClick(it) }
+        binding.homeTitle3.setOnClickListener { onClick(it) }
+        binding.homeBtn3.setOnClickListener { onClick(it) }
+    }
+
+    override fun onClick(v: View?) {
+        if (v != null) {
+            when (v.id) {
+                R.id.home_title1, R.id.home_btn1 -> (activity as MainActivity).navigateSearch("title1")
+                R.id.home_title2, R.id.home_btn2 -> (activity as MainActivity).navigateSearch("title2")
+                R.id.home_title3, R.id.home_btn3 -> (activity as MainActivity).navigateSearch("title3")
+            }
+        }
+
     }
 
     override fun onDestroyView() {

@@ -27,21 +27,27 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavi.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> navigateHome()
-                R.id.menu_search -> navigateSearch()
+                R.id.menu_search -> navigateSearch("menu")
             }
             true
         }
     }
 
-    private fun navigateHome() {
+    fun navigateHome() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, homeFragment)
         transaction.commit()
+        binding.bottomNavi.menu.getItem(0).isChecked = true
     }
 
-    private fun navigateSearch() {
+    fun navigateSearch(from: String) {
+        val bundle = Bundle()
         val transaction = supportFragmentManager.beginTransaction()
+
+        bundle.putString("from", from)
+        searchFragment.arguments = bundle
         transaction.replace(R.id.fragment_container, searchFragment)
         transaction.commit()
+        binding.bottomNavi.menu.getItem(1).isChecked = true
     }
 }
