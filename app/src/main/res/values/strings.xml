@@ -21,5 +21,13 @@
     <string name="main_tab5">NEW</string>
     <string name="banner_size">/ 4</string>
     <string name="project_count">개의 프로젝트</string>
-    <string name="days_left">일 남음</string>
+    <string name="middle_tab1">에디터픽</string>
+    <string name="middle_tab2">인기찜</string>
+    <string name="middle_tab3">성공임박</string>
+    <string name="home_title1">공개예정 프로젝트</string>
+    <string name="home_btn_text1">공개예정 프로젝트 더보기</string>
+    <string name="home_title2">인기 추천 프로젝트</string>
+    <string name="home_btn_text2">인기 추천 프로젝트 더보기</string>
+    <string name="home_title3">신규 추천 프로젝트</string>
+    <string name="home_btn_text3">신규 추천 프로젝트 더보기</string>
 </resources>
