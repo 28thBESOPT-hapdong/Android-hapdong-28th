@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/ic_launcher_background"
+        android:scaleType="fitXY"
         app:layout_constraintDimensionRatio="360:212"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,9 +37,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/banner_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="53dp"
             android:layout_marginBottom="12dp"
             android:fontFamily="@font/applesdgothicneo_regular"
             android:text="천연소재 손뜨개실로 만드는 MBTI인형"
@@ -46,7 +48,7 @@
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/banner_title"
-            app:layout_constraintTop_toBottomOf="@id/banner_title" />
+            app:layout_constraintTop_toTopOf="@id/banner_title" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
