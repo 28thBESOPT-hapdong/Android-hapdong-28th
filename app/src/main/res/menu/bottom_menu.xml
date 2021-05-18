@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/menu_heart"
-        android:icon="@drawable/heart_24_px"
+        android:icon="@drawable/heart_24_px_tab_bar"
         android:title="좋아한" />
 
     <item
