@@ -22,6 +22,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:background="@drawable/ic_launcher_background"
+            android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.cardview.widget.CardView>
