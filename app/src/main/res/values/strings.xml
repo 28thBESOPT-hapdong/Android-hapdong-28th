@@ -30,4 +30,5 @@
     <string name="home_btn_text2">인기 추천 프로젝트 더보기</string>
     <string name="home_title3">신규 추천 프로젝트</string>
     <string name="home_btn_text3">신규 추천 프로젝트 더보기</string>
+    <string name="title_exhibition">진행중인 기획전</string>
 </resources>
