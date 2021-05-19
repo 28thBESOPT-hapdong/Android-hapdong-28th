@@ -189,10 +189,10 @@
 
                 <TextView
                     android:id="@+id/home_text1"
+                    style="@style/HomeTitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/home_title1"
-                    android:theme="@style/HomeTitleStyle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -209,12 +209,12 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv1"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/home_title1"
-                />
+                app:spanCount="2" />
 
             <Button
                 android:id="@+id/home_btn1"
@@ -247,19 +247,18 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_exhibition"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="12dp"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
                     android:paddingStart="11dp"
-                    android:paddingEnd="47dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/title_exhibition"
-                    tools:ignore="RtlSymmetry"
                     tools:listitem="@layout/item_home_exhibition" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -269,7 +268,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="61dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/exhibition_container">
 
@@ -295,11 +294,12 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv2"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/home_title2" />
+                android:layout_marginTop="12dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/home_title2"
+                app:spanCount="2" />
 
             <Button
                 android:id="@+id/home_btn2"
@@ -316,7 +316,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="34dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/home_btn2">
 
@@ -344,10 +344,10 @@
                 android:id="@+id/rv3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
                 app:layout_constraintTop_toBottomOf="@id/home_title3"
-                />
+                app:spanCount="2" />
 
             <Button
                 android:id="@+id/home_btn3"

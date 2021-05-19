@@ -7,9 +7,8 @@ import com.bumptech.glide.Glide
 import com.example.android_hapdong_28th.databinding.ItemHomeExhibitionBinding
 import com.example.android_hapdong_28th.main.home.data.HomeExhibitionData
 
-class HomeExhibitionAdapter :
+class HomeExhibitionAdapter(private val exhibitionList: MutableList<HomeExhibitionData>) :
     RecyclerView.Adapter<HomeExhibitionAdapter.HomeExhibitionViewHolder>() {
-    val exhibitionList = mutableListOf<HomeExhibitionData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeExhibitionViewHolder {
         val binding =
