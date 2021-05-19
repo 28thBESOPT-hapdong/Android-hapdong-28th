@@ -10,15 +10,15 @@ import androidx.core.widget.TextViewCompat
 import com.example.android_hapdong_28th.R
 import com.example.android_hapdong_28th.databinding.FragmentHomeBinding
 import com.example.android_hapdong_28th.main.MainActivity
-import com.example.android_hapdong_28th.main.home.adapter.BannerPagerAdapter
-import com.example.android_hapdong_28th.main.home.data.BannerData
+import com.example.android_hapdong_28th.main.home.adapter.HomeBannerAdapter
+import com.example.android_hapdong_28th.main.home.data.HomeBannerData
 import com.google.android.material.tabs.TabLayout
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
-    private lateinit var bannerPagerAdapter: BannerPagerAdapter
+    private lateinit var homeBannerAdapter: HomeBannerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,8 +64,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun configureMainBanner() {
-        bannerPagerAdapter = BannerPagerAdapter(bannerList)
-        binding.banner.adapter = bannerPagerAdapter
+        homeBannerAdapter = HomeBannerAdapter(bannerList)
+        binding.banner.adapter = homeBannerAdapter
     }
 
     private fun configureNavigation() {
@@ -95,22 +95,22 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     companion object {
         val bannerList = mutableListOf(
-            BannerData(
+            HomeBannerData(
                 "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
                 "title1",
                 "content1"
             ),
-            BannerData(
+            HomeBannerData(
                 "https://cdn.pixabay.com/photo/2017/10/10/21/47/laptop-2838921_1280.jpg",
                 "title2",
                 "content2"
             ),
-            BannerData(
+            HomeBannerData(
                 "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
                 "title3",
                 "content3"
             ),
-            BannerData(
+            HomeBannerData(
                 "https://cdn.pixabay.com/photo/2017/10/10/21/47/laptop-2838921_1280.jpg",
                 "title3",
                 "content4"
