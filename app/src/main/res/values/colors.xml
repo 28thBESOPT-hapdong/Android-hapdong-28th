@@ -18,4 +18,5 @@
     <color name="middle_gray">#6d6d6d</color>
     <color name="gray_b2">#b2b2b2</color>
     <color name="banner_count_color">#A4874A</color>
+    <color name="indicator_gray">#c4c4c4</color>
 </resources>

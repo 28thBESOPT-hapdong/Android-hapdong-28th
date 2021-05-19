@@ -1,7 +1,8 @@
 package com.example.android_hapdong_28th.main.home.data
 
-data class BannerData(
+data class HomeExhibitionData(
     val image: String,
     val title: String,
-    val content: String,
+    val count: Int,
+    val tag: ArrayList<String>,
 )

@@ -133,19 +133,50 @@
                 android:id="@+id/vp2_small"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="360:466"
-                app:layout_constraintTop_toBottomOf="@id/middle_tab" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/ic_launcher_background"
-                app:layout_constraintDimensionRatio="133:42"
+                android:layout_marginHorizontal="2dp"
+                app:layout_constraintDimensionRatio="356:453"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/vp2_small"
-                app:layout_constraintWidth_percent="0.37" />
+                app:layout_constraintTop_toBottomOf="@id/middle_tab" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/indicator_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vp2_small">
+
+                <View
+                    android:id="@+id/indicator1"
+                    style="@style/IndicatorStyle.Selected"
+                    android:background="@color/dark_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/indicator2"
+                    style="@style/IndicatorStyle"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/indicator_gray"
+                    app:layout_constraintBottom_toBottomOf="@id/indicator1"
+                    app:layout_constraintLeft_toRightOf="@id/indicator1"
+                    app:layout_constraintTop_toTopOf="@id/indicator1" />
+
+                <View
+                    android:id="@+id/indicator3"
+                    style="@style/IndicatorStyle"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/indicator_gray"
+                    app:layout_constraintBottom_toBottomOf="@id/indicator2"
+                    app:layout_constraintLeft_toRightOf="@id/indicator2"
+                    app:layout_constraintTop_toTopOf="@id/indicator2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/home_title1"
@@ -154,7 +185,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view">
+                app:layout_constraintTop_toBottomOf="@id/indicator_container">
 
                 <TextView
                     android:id="@+id/home_text1"
@@ -195,6 +226,44 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rv1" />
 
+            <!-- 진행중인 기획전 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/exhibition_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_btn1">
+
+                <TextView
+                    android:id="@+id/title_exhibition"
+                    style="@style/HomeTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/title_exhibition"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="47dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_exhibition"
+                    tools:ignore="RtlSymmetry"
+                    tools:listitem="@layout/item_home_exhibition" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/home_title2"
                 android:layout_width="wrap_content"
@@ -202,7 +271,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_btn1">
+                app:layout_constraintTop_toBottomOf="@id/exhibition_container">
 
                 <TextView
                     android:id="@+id/home_text2"

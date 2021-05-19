@@ -44,4 +44,13 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="IndicatorStyle">
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_width">27dp</item>
+    </style>
+
+    <style name="IndicatorStyle.Selected">
+        <item name="android:layout_width">26dp</item>
+    </style>
+
 </resources>
