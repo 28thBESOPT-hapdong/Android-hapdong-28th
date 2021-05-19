@@ -134,14 +134,14 @@
                     />
 
                 <ImageView
-                    android:id="@+id/iv_bottom_arr_pro"
+                    android:id="@+id/iv_close_pro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/close_24_px"
                     app:layout_constraintTop_toTopOf="@id/btn_project"
                     app:layout_constraintStart_toStartOf="@id/btn_project"
                     android:layout_marginTop="4dp"
-                    android:layout_marginStart="99dp"
+                    android:layout_marginStart="103dp"
                     android:fontFamily="@font/notosans_medium"
                     android:textSize="13sp"
                     android:textColor="@color/dark_gray"

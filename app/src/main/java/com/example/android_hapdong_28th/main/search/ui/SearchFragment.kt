@@ -78,7 +78,10 @@ class SearchFragment : Fragment() {
     private fun setButtonText(from: String) {
         Log.d("tag1", from)
         when (from) {
-            "menu" -> binding.btnProject.visibility = View.GONE
+            "menu" -> {
+                binding.btnProject.visibility = View.GONE
+                binding.ivClosePro.visibility = View.GONE
+            }
             "title1" -> binding.btnProject.text = getString(R.string.home_title1)
             "title2" -> binding.btnProject.text = getString(R.string.home_title2)
             "title3" -> binding.btnProject.text = getString(R.string.home_title3)
