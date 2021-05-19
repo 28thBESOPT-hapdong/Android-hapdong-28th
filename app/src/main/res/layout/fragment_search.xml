@@ -3,6 +3,256 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.search.ui.SearchFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cv_search_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:src="@drawable/arrow_24_px_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/iv_arrow"
+            app:layout_constraintStart_toEndOf="@id/iv_arrow"
+            app:layout_constraintEnd_toStartOf="@id/iv_search_bar"
+            android:text="@string/search"
+            android:fontFamily="@font/notosans_bold"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/dark_gray"
+            android:letterSpacing="-0.03"
+            android:lineSpacingExtra="10.1sp"/>
+
+        <ImageView
+            android:id="@+id/iv_search_bar"
+            android:src="@drawable/search_bar_24_px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tv_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="11dp"/>
+
+        <HorizontalScrollView
+            android:id="@+id/sv_search_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_search"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cv_search_tab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingStart="11dp">
+
+                <TextView
+                    android:id="@+id/btn_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category"
+                    android:background="@drawable/background_search_tab"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="23dp"
+                    android:fontFamily="@font/notosans_medium"
+                    android:textSize="13sp"
+                    android:textColor="@color/dark_gray"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_bottom_arr_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ar_bottom_24_px"
+                    app:layout_constraintTop_toTopOf="@id/btn_category"
+                    app:layout_constraintStart_toStartOf="@id/btn_category"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="60dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/btn_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rate"
+                    android:background="@drawable/background_search_tab"
+                    app:layout_constraintTop_toTopOf="@id/btn_category"
+                    app:layout_constraintStart_toEndOf="@id/btn_category"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/notosans_medium"
+                    android:textSize="13sp"
+                    android:textColor="@color/dark_gray"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_bottom_arr_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ar_bottom_24_px"
+                    app:layout_constraintTop_toTopOf="@id/btn_rate"
+                    app:layout_constraintStart_toStartOf="@id/btn_rate"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="47dp"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project"
+                    android:background="@drawable/background_search_tab_select"
+                    app:layout_constraintTop_toTopOf="@id/btn_rate"
+                    app:layout_constraintStart_toEndOf="@id/btn_rate"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="24dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/notosans_medium"
+                    android:textSize="13sp"
+                    android:textColor="@color/dark_gray"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_close_pro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/close_24_px"
+                    app:layout_constraintTop_toTopOf="@id/btn_project"
+                    app:layout_constraintStart_toStartOf="@id/btn_project"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="103dp"
+                    android:fontFamily="@font/notosans_medium"
+                    android:textSize="13sp"
+                    android:textColor="@color/dark_gray"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_pick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pick"
+                    android:background="@drawable/background_search_tab"
+                    app:layout_constraintTop_toTopOf="@id/btn_project"
+                    app:layout_constraintStart_toEndOf="@id/btn_project"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/notosans_medium"
+                    android:textSize="13sp"
+                    android:textColor="@color/dark_gray"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </HorizontalScrollView>
+
+        <ImageView
+            android:id="@+id/iv_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/group_70"
+            app:layout_constraintTop_toBottomOf ="@id/iv_search_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="1dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_b2"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/cv_search_top_bar"
+        android:layout_marginTop="2dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cv_search_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/divider_line"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingTop="17dp">
+
+        <TextView
+            android:id="@+id/tv_project_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/project_cnt"
+            app:layout_constraintTop_toTopOf= "parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="11dp"
+            android:textSize="13sp"
+            android:textColor="@color/red_orange"
+            />
+
+        <TextView
+            android:id="@+id/tv_project_cnt_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/project_cnt_msg"
+            app:layout_constraintTop_toTopOf= "@id/tv_project_cnt"
+            app:layout_constraintStart_toEndOf="@id/tv_project_cnt"
+            android:textSize="13sp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/list_24_px"
+            app:layout_constraintTop_toTopOf= "parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="44dp"/>
+
+        <TextView
+            android:id="@+id/tv_newest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newest"
+            app:layout_constraintTop_toTopOf= "@id/iv_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="11dp"
+            android:textSize="13sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_search_bottom_bar"
+        tools:listitem="@layout/item_search"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:paddingHorizontal="11dp"
+        android:layout_marginTop="17dp"
+        />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

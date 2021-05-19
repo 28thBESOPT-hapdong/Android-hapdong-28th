@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="status_bar_color">#1c3aa9</color>
     <color name="red_orange">#ec635d</color>
     <color name="transparent_gray">#434545</color>
@@ -15,4 +16,6 @@
     <color name="white_gray">#e6e6e6</color>
     <color name="right_gray">#aeaeae</color>
     <color name="middle_gray">#6d6d6d</color>
+    <color name="gray_b2">#b2b2b2</color>
+    <color name="banner_count_color">#A4874A</color>
 </resources>
