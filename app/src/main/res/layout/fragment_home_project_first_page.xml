@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.home.ui.HomeSmallThirdFragment">
+    tools:context=".main.home.ui.HomeProjectFirstPageFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_small3"
+        android:id="@+id/rv_small1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
+        android:nestedScrollingEnabled="false"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"

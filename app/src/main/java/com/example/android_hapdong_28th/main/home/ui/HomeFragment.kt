@@ -13,7 +13,7 @@ import com.example.android_hapdong_28th.main.MainActivity
 import com.example.android_hapdong_28th.main.home.adapter.HomeBannerAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeExhibitionAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeProjectAdapter
-import com.example.android_hapdong_28th.main.home.adapter.HomeSmallPager2Adapter
+import com.example.android_hapdong_28th.main.home.adapter.HomeProjectPagerAdapter
 import com.example.android_hapdong_28th.main.home.data.HomeBannerData
 import com.example.android_hapdong_28th.main.home.data.HomeExhibitionData
 import com.example.android_hapdong_28th.main.home.data.HomeProjectData
@@ -112,8 +112,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun configureProjectPager() {
-        binding.vp2Small.apply {
-            adapter = HomeSmallPager2Adapter(this@HomeFragment)
+        binding.projectPager.apply {
+            adapter = HomeProjectPagerAdapter(this@HomeFragment)
             isSaveEnabled = false
         }
     }
@@ -174,6 +174,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
                 "Main Banner\nTitle ${i + 1}",
                 "Content ${i + 1}"
+            )
+        }
+
+        val projectListForPager = MutableList<HomeProjectData>(12) { i ->
+            HomeProjectData(
+                "https://cdn.pixabay.com/photo/2014/05/07/06/44/cat-339400__480.jpg",
+                "Category${i + 1}  |  ${i + 1}", "Upcoming Project\nTitle ${i + 1}", (i + 1) * 100
             )
         }
 
