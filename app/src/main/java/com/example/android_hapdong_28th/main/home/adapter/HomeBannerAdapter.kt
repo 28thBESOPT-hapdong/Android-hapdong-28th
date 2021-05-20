@@ -13,10 +13,10 @@ class HomeBannerAdapter(private val bannerList: MutableList<HomeBannerData>) : P
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val binding =
             ItemHomeBannerBinding.inflate(LayoutInflater.from(container.context), container, false)
-        Glide.with(binding.root).load(bannerList[position].image).into(binding.bannerImage)
-        binding.bannerTitle.text = bannerList[position].title
-        binding.bannerContent.text = bannerList[position].content
-        binding.bannerIndex.text = "${position + 1} "
+        Glide.with(binding.root).load(bannerList[position].image).into(binding.image)
+        binding.title.text = bannerList[position].title
+        binding.content.text = bannerList[position].content
+        binding.index.text = "${position + 1} "
         container.addView(binding.root)
         return binding.root
     }
