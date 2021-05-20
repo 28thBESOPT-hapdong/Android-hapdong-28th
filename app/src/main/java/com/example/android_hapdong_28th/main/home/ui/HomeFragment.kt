@@ -115,7 +115,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
         binding.vp2Small.apply {
             adapter = HomeSmallPager2Adapter(this@HomeFragment)
             isSaveEnabled = false
-            isUserInputEnabled = false
         }
     }
 
