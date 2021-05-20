@@ -1,7 +1,6 @@
 package com.example.android_hapdong_28th.main.home.ui
 
 import android.os.Bundle
-import android.provider.Settings.Global.getString
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +45,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         configureMainTab()
         configureMainBanner()
         configureMiddleTab()
-        configureMiddlePager()
+        configureProjectPager()
         configureProjectList()
         configureExhibitionList()
         configureNavigation()
@@ -112,8 +111,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         })
     }
 
-    private fun configureMiddlePager() {
-        binding.vp2Small.adapter = HomeSmallPager2Adapter(this@HomeFragment)
+    private fun configureProjectPager() {
+        binding.vp2Small.apply {
+            adapter = HomeSmallPager2Adapter(this@HomeFragment)
+            isSaveEnabled = false
+            isUserInputEnabled = false
+        }
     }
 
     private fun configureProjectList() {
@@ -130,6 +133,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         homeNewProjectAdapter.notifyDataSetChanged()
     }
 
+    private fun configureExhibitionList() {
+        homeExhibitionAdapter = HomeExhibitionAdapter(exhibitionList)
+        binding.rvExhibition.adapter = homeExhibitionAdapter
+        homeExhibitionAdapter.notifyDataSetChanged()
+    }
+
     private fun configureNavigation() {
         binding.upcomingProjectContainer.setOnClickListener { onClick(it) }
         binding.upcomingProjectBtn.setOnClickListener { onClick(it) }
@@ -137,12 +146,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
         binding.popularProjectBtn.setOnClickListener { onClick(it) }
         binding.newProjectContainer.setOnClickListener { onClick(it) }
         binding.newProjectBtn.setOnClickListener { onClick(it) }
-    }
-
-    private fun configureExhibitionList() {
-        homeExhibitionAdapter = HomeExhibitionAdapter(exhibitionList)
-        binding.rvExhibition.adapter = homeExhibitionAdapter
-        homeExhibitionAdapter.notifyDataSetChanged()
     }
 
     override fun onClick(view: View?) {
