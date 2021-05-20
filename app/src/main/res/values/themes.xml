@@ -66,4 +66,13 @@
         <item name="android:stateListAnimator">@null</item>
     </style>
 
+    <style name="ScrollbarStyle">
+        <item name="android:scrollbarAlwaysDrawHorizontalTrack">true</item>
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbHorizontal">@color/dark_gray</item>
+        <item name="android:scrollbarTrackHorizontal">@color/indicator_gray</item>
+        <item name="android:scrollbarSize">3dp</item>
+    </style>
+
 </resources>
