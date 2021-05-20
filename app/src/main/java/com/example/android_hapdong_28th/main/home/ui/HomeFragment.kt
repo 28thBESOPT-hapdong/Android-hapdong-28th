@@ -131,12 +131,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun configureNavigation() {
-        binding.homeTitle1.setOnClickListener { onClick(it) }
-        binding.homeBtn1.setOnClickListener { onClick(it) }
-        binding.homeTitle2.setOnClickListener { onClick(it) }
-        binding.homeBtn2.setOnClickListener { onClick(it) }
-        binding.homeTitle3.setOnClickListener { onClick(it) }
-        binding.homeBtn3.setOnClickListener { onClick(it) }
+        binding.upcomingProjectContainer.setOnClickListener { onClick(it) }
+        binding.upcomingProjectBtn.setOnClickListener { onClick(it) }
+        binding.popularProjectContainer.setOnClickListener { onClick(it) }
+        binding.popularProjectBtn.setOnClickListener { onClick(it) }
+        binding.newProjectContainer.setOnClickListener { onClick(it) }
+        binding.newProjectBtn.setOnClickListener { onClick(it) }
     }
 
     private fun configureExhibitionList() {
@@ -145,15 +145,20 @@ class HomeFragment : Fragment(), View.OnClickListener {
         homeExhibitionAdapter.notifyDataSetChanged()
     }
 
-    override fun onClick(v: View?) {
-        if (v != null) {
-            when (v.id) {
-                R.id.home_title1, R.id.home_btn1 -> (activity as MainActivity).navigateSearch("title1")
-                R.id.home_title2, R.id.home_btn2 -> (activity as MainActivity).navigateSearch("title2")
-                R.id.home_title3, R.id.home_btn3 -> (activity as MainActivity).navigateSearch("title3")
+    override fun onClick(view: View?) {
+        if (view != null) {
+            when (view.id) {
+                R.id.upcoming_project_container, R.id.upcoming_project_btn -> (activity as MainActivity).navigateSearch(
+                    "upcoming"
+                )
+                R.id.popular_project_container, R.id.popular_project_btn -> (activity as MainActivity).navigateSearch(
+                    "popular"
+                )
+                R.id.new_project_container, R.id.new_project_btn -> (activity as MainActivity).navigateSearch(
+                    "new"
+                )
             }
         }
-
     }
 
     override fun onDestroyView() {
@@ -180,7 +185,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val exhibitionList = MutableList<HomeExhibitionData>(4) { i ->
             HomeExhibitionData(
                 "https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_1280.jpg",
-                "Title ${i + 1}", (i + 1) * 100,
+                "Exhibition Title ${i + 1}", (i + 1) * 100,
                 arrayListOf("#tag1", "#tag2", "#tag3", "#tag4")
             )
         }

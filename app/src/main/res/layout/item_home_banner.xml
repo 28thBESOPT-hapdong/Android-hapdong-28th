@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/banner_image"
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -21,10 +21,10 @@
         android:background="@color/mustard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner_image">
+        app:layout_constraintTop_toBottomOf="@+id/image">
 
         <TextView
-            android:id="@+id/banner_title"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -37,7 +37,7 @@
             tools:text="내 손으로 만드는\n정성 가득 반려인형" />
 
         <TextView
-            android:id="@+id/banner_content"
+            android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="53dp"
@@ -46,8 +46,8 @@
             android:textColor="@color/white"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/banner_title"
-            app:layout_constraintTop_toTopOf="@id/banner_title"
+            app:layout_constraintLeft_toLeftOf="@id/title"
+            app:layout_constraintTop_toTopOf="@id/title"
             tools:text="천연소재 손뜨개실로 만드는 MBTI인형" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,19 +60,19 @@
             app:layout_constraintRight_toRightOf="parent">
 
             <TextView
-                android:id="@+id/banner_index"
+                android:id="@+id/index"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/applesdgothicneo_regular"
                 android:textColor="#ffffff"
                 android:textSize="10sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/banner_size"
+                app:layout_constraintRight_toLeftOf="@+id/size"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="n " />
 
             <TextView
-                android:id="@+id/banner_size"
+                android:id="@+id/size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/applesdgothicneo_regular"

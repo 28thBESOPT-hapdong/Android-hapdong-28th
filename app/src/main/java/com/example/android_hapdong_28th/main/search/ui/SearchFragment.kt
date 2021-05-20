@@ -1,12 +1,10 @@
 package com.example.android_hapdong_28th.main.search.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
 import com.example.android_hapdong_28th.R
 import com.example.android_hapdong_28th.databinding.FragmentSearchBinding
 import com.example.android_hapdong_28th.main.MainActivity
@@ -76,15 +74,14 @@ class SearchFragment : Fragment() {
     }
 
     private fun setButtonText(from: String) {
-        Log.d("tag1", from)
         when (from) {
-            "menu" -> {
+            "bottom" -> {
                 binding.btnProject.visibility = View.GONE
                 binding.ivClosePro.visibility = View.GONE
             }
-            "title1" -> binding.btnProject.text = getString(R.string.home_title1)
-            "title2" -> binding.btnProject.text = getString(R.string.home_title2)
-            "title3" -> binding.btnProject.text = getString(R.string.home_title3)
+            "upcoming" -> binding.btnProject.text = getString(R.string.upcoming_project_title)
+            "popular" -> binding.btnProject.text = getString(R.string.popular_project_title)
+            "new" -> binding.btnProject.text = getString(R.string.new_project_title)
         }
     }
 
