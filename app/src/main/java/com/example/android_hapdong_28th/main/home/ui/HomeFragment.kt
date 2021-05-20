@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.widget.TextViewCompat
+import androidx.viewpager.widget.ViewPager
 import com.example.android_hapdong_28th.R
 import com.example.android_hapdong_28th.databinding.FragmentHomeBinding
 import com.example.android_hapdong_28th.main.MainActivity
@@ -19,9 +20,11 @@ import com.example.android_hapdong_28th.main.home.data.HomeExhibitionData
 import com.example.android_hapdong_28th.main.home.data.HomeProjectData
 
 import com.google.android.material.tabs.TabLayout
+import kotlin.concurrent.timer
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
+    private lateinit var bannerViewPager: ViewPager
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
 
@@ -41,7 +44,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        bannerViewPager = _binding?.banner!!
         configureMainTab()
         configureMainBanner()
         configureMiddleTab()
@@ -82,6 +85,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
         homeBannerAdapter = HomeBannerAdapter(bannerList)
         binding.banner.adapter = homeBannerAdapter
         homeBannerAdapter.notifyDataSetChanged()
+
+        //6초마다 자동슬라이드
+        timer(period =  6000){
+            activity?.runOnUiThread{
+                if (bannerViewPager.currentItem < homeBannerAdapter.count-1){
+                    bannerViewPager.currentItem++
+                }else{
+                    bannerViewPager.currentItem=0
+                }
+            }
+        }
     }
 
     private fun configureMiddleTab() {
