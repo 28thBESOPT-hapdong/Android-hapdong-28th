@@ -1,6 +1,7 @@
 package com.example.android_hapdong_28th.main.home.ui
 
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,11 @@ import com.example.android_hapdong_28th.databinding.FragmentHomeBinding
 import com.example.android_hapdong_28th.main.MainActivity
 import com.example.android_hapdong_28th.main.home.adapter.HomeBannerAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeExhibitionAdapter
-import com.example.android_hapdong_28th.main.home.adapter.HomeSmallListAdapter
+import com.example.android_hapdong_28th.main.home.adapter.HomeProjectAdapter
+import com.example.android_hapdong_28th.main.home.adapter.HomeSmallPager2Adapter
 import com.example.android_hapdong_28th.main.home.data.HomeBannerData
 import com.example.android_hapdong_28th.main.home.data.HomeExhibitionData
-import com.example.android_hapdong_28th.main.home.data.HomeSmallData
+import com.example.android_hapdong_28th.main.home.data.HomeProjectData
 
 import com.google.android.material.tabs.TabLayout
 
@@ -25,9 +27,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
 
     private lateinit var homeBannerAdapter: HomeBannerAdapter
-    private lateinit var homeSmallListAdapter1: HomeSmallListAdapter
-    private lateinit var homeSmallListAdapter2: HomeSmallListAdapter
-    private lateinit var homeSmallListAdapter3: HomeSmallListAdapter
+    private lateinit var homeUpcomingProjectAdapter: HomeProjectAdapter
+    private lateinit var homePopularProjectAdapter: HomeProjectAdapter
+    private lateinit var homeNewProjectAdapter: HomeProjectAdapter
     private lateinit var homeExhibitionAdapter: HomeExhibitionAdapter
 
     override fun onCreateView(
@@ -44,21 +46,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         configureMainTab()
         configureMainBanner()
         configureMiddleTab()
+        configureMiddlePager()
+        configureProjectList()
         configureExhibitionList()
         configureNavigation()
-
-        homeSmallListAdapter1 = HomeSmallListAdapter()
-        _binding?.rv1?.adapter = homeSmallListAdapter1
-        saveDataHomeSmall(homeSmallListAdapter1)
-
-        homeSmallListAdapter2 = HomeSmallListAdapter()
-        _binding?.rv2?.adapter = homeSmallListAdapter2
-        saveDataHomeSmall(homeSmallListAdapter2)
-        homeSmallListAdapter3 = HomeSmallListAdapter()
-        _binding?.rv3?.adapter = homeSmallListAdapter3
-        saveDataHomeSmall(homeSmallListAdapter3)
-
-
     }
 
     private fun configureMainTab() {
@@ -91,6 +82,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun configureMainBanner() {
         homeBannerAdapter = HomeBannerAdapter(bannerList)
         binding.banner.adapter = homeBannerAdapter
+        homeBannerAdapter.notifyDataSetChanged()
     }
 
     private fun configureMiddleTab() {
@@ -120,6 +112,24 @@ class HomeFragment : Fragment(), View.OnClickListener {
         })
     }
 
+    private fun configureMiddlePager() {
+        binding.vp2Small.adapter = HomeSmallPager2Adapter(this@HomeFragment)
+    }
+
+    private fun configureProjectList() {
+        homeUpcomingProjectAdapter = HomeProjectAdapter(upcomingProjectList)
+        binding.rvUpcomingProject.adapter = homeUpcomingProjectAdapter
+        homeUpcomingProjectAdapter.notifyDataSetChanged()
+
+        homePopularProjectAdapter = HomeProjectAdapter(popularProjectList)
+        binding.rvPopularProject.adapter = homePopularProjectAdapter
+        homePopularProjectAdapter.notifyDataSetChanged()
+
+        homeNewProjectAdapter = HomeProjectAdapter(newProjectList)
+        binding.rvNewProject.adapter = homeNewProjectAdapter
+        homeNewProjectAdapter.notifyDataSetChanged()
+    }
+
     private fun configureNavigation() {
         binding.homeTitle1.setOnClickListener { onClick(it) }
         binding.homeBtn1.setOnClickListener { onClick(it) }
@@ -132,6 +142,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun configureExhibitionList() {
         homeExhibitionAdapter = HomeExhibitionAdapter(exhibitionList)
         binding.rvExhibition.adapter = homeExhibitionAdapter
+        homeExhibitionAdapter.notifyDataSetChanged()
     }
 
     override fun onClick(v: View?) {
@@ -150,110 +161,42 @@ class HomeFragment : Fragment(), View.OnClickListener {
         _binding = null
     }
 
-    private fun saveDataHomeSmall(Adapter: HomeSmallListAdapter) {
-        Adapter.homeSmallList.addAll(
-            listOf<HomeSmallData>(
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title1",
-                    goal = "goal1",
-                    category = "category1"
-                ),
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title2",
-                    goal = "goal2",
-                    category = "category2"
-                ),
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title3",
-                    goal = "goal3",
-                    category = "category3"
-                ),
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title4",
-                    goal = "goal4",
-                    category = "category4"
-                ),
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title5",
-                    goal = "goal5",
-                    category = "category5"
-                ),
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title6",
-                    goal = "goal6",
-                    category = "category6"
-                ),
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title7",
-                    goal = "goal7",
-                    category = "category7"
-                ),
-                HomeSmallData(
-                    image = "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                    title = "title18",
-                    goal = "goal8",
-                    category = "category8"
-                )
-            )
-        )
-    }
-
     companion object {
-        val bannerList = mutableListOf(
+        val bannerList = MutableList<HomeBannerData>(4) { i ->
             HomeBannerData(
                 "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                "Main Banner\nTitle 1",
-                "Content 1"
-            ),
-            HomeBannerData(
-                "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                "Main Banner\nTitle 2",
-                "Content 2"
-            ),
-            HomeBannerData(
-                "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                "Main Banner\nTitle 3",
-                "Content 3"
-            ),
-            HomeBannerData(
-                "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                "Main Banner\nTitle 4",
-                "Content 4"
-            ),
-        )
+                "Main Banner\nTitle ${i + 1}",
+                "Content ${i + 1}"
+            )
+        }
 
-        val exhibitionList = mutableListOf(
+        val upcomingProjectList = MutableList<HomeProjectData>(8) { i ->
+            HomeProjectData(
+                "https://cdn.pixabay.com/photo/2020/06/06/06/44/new-york-5265414__480.jpg",
+                "Category${i + 1}  |  ${i + 1}", "Upcoming Project\nTitle ${i + 1}", (i + 1) * 100
+            )
+        }
+
+        val exhibitionList = MutableList<HomeExhibitionData>(4) { i ->
             HomeExhibitionData(
                 "https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_1280.jpg",
-                "Title 1",
-                10,
+                "Title ${i + 1}", (i + 1) * 100,
                 arrayListOf("#tag1", "#tag2", "#tag3", "#tag4")
-            ),
-            HomeExhibitionData(
-                "https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_1280.jpg",
-                "Title 2",
-                20,
-                arrayListOf("#tag1", "#tag2", "#tag3", "#tag4")
-            ),
-            HomeExhibitionData(
-                "https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_1280.jpg",
-                "Title 3",
-                30,
-                arrayListOf("#tag1", "#tag2", "#tag3", "#tag4")
-            ),
-            HomeExhibitionData(
-                "https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_1280.jpg",
-                "Title 4",
-                40,
-                arrayListOf("#tag1", "#tag2", "#tag3", "#tag4")
-            ),
-        )
+            )
+        }
+
+        val popularProjectList = MutableList<HomeProjectData>(8) { i ->
+            HomeProjectData(
+                "https://cdn.pixabay.com/photo/2021/01/21/15/54/books-5937716_1280.jpg",
+                "Category${i + 1}  |  ${i + 1}", "Popular Project\nTitle ${i + 1}", (i + 1) * 100
+            )
+        }
+
+        val newProjectList = MutableList<HomeProjectData>(8) { i ->
+            HomeProjectData(
+                "https://cdn.pixabay.com/photo/2021/01/29/14/41/wardrobe-5961193__480.jpg",
+                "Category${i + 1}  |  ${i + 1}", "New Project\nTitle ${i + 1}", (i + 1) * 100
+            )
+        }
     }
 }

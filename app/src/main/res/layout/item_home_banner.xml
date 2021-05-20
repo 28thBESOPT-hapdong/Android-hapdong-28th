@@ -9,11 +9,11 @@
         android:id="@+id/banner_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/ic_launcher_background"
         android:scaleType="fitXY"
         app:layout_constraintDimensionRatio="360:212"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@drawable/ic_launcher_background" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,11 +30,11 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/applesdgothicneo_bold"
-            android:text="내 손으로 만드는\n정성 가득 반려인형"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="내 손으로 만드는\n정성 가득 반려인형" />
 
         <TextView
             android:id="@+id/banner_content"
@@ -43,12 +43,12 @@
             android:layout_marginTop="53dp"
             android:layout_marginBottom="12dp"
             android:fontFamily="@font/applesdgothicneo_regular"
-            android:text="천연소재 손뜨개실로 만드는 MBTI인형"
             android:textColor="@color/white"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/banner_title"
-            app:layout_constraintTop_toTopOf="@id/banner_title" />
+            app:layout_constraintTop_toTopOf="@id/banner_title"
+            tools:text="천연소재 손뜨개실로 만드는 MBTI인형" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                 android:textSize="10sp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
