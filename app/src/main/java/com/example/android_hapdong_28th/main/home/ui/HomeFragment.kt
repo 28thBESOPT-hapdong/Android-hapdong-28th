@@ -19,6 +19,7 @@ import com.example.android_hapdong_28th.main.home.data.HomeExhibitionData
 import com.example.android_hapdong_28th.main.home.data.HomeProjectData
 
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -46,6 +47,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         configureMainBanner()
         configureMiddleTab()
         configureProjectPager()
+        configureIndicator(binding)
         configureProjectList()
         configureExhibitionList()
         configureNavigation()
@@ -116,6 +118,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
             adapter = HomeProjectPagerAdapter(this@HomeFragment)
             isSaveEnabled = false
         }
+    }
+
+    private fun configureIndicator(binding: FragmentHomeBinding) {
+        TabLayoutMediator(binding.indicator, binding.projectPager) { tab, position ->  }.attach()
     }
 
     private fun configureProjectList() {
