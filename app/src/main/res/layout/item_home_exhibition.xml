@@ -2,26 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="302dp"
+    android:layout_height="wrap_content"
+    android:paddingEnd="14dp"
+    android:paddingBottom="20dp">
 
     <ImageView
-        android:id="@+id/big_image"
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/ic_launcher_background"
+        android:scaleType="fitXY"
         app:layout_constraintDimensionRatio="302:222"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/big_title"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/applesdgothicneo_medium"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/big_image"
+        app:layout_constraintTop_toBottomOf="@+id/image"
         tools:text="인형놀이" />
 
     <TextView
@@ -32,9 +35,9 @@
         android:fontFamily="@font/applesdgothicneo_medium"
         android:textColor="@color/red_orange"
         android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="@id/big_title"
-        app:layout_constraintLeft_toRightOf="@id/big_title"
-        app:layout_constraintTop_toTopOf="@id/big_title"
+        app:layout_constraintBottom_toBottomOf="@id/title"
+        app:layout_constraintLeft_toRightOf="@id/title"
+        app:layout_constraintTop_toTopOf="@id/title"
         tools:text="n" />
 
     <TextView
@@ -52,8 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingVertical="10dp"
-        app:layout_constraintLeft_toLeftOf="@id/big_title"
-        app:layout_constraintTop_toBottomOf="@+id/big_title">
+        app:layout_constraintLeft_toLeftOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
         <TextView
             android:id="@+id/tag1"

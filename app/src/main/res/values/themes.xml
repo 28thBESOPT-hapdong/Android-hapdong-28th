@@ -4,6 +4,7 @@
         <item name="android:statusBarColor">@color/status_bar_color</item>
 
         <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="android:letterSpacing">-0.05</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textColor">@color/dark_gray</item>
 
@@ -42,6 +43,36 @@
     <style name="HomeTitleStyle">
         <item name="fontFamily">@font/notosans_bold</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="IndicatorStyle">
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_width">27dp</item>
+    </style>
+
+    <style name="IndicatorStyle.Selected">
+        <item name="android:layout_width">26dp</item>
+    </style>
+
+    <style name="HomeButtonStyle" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/middle_gray</item>
+        <item name="android:letterSpacing">-0.05</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="strokeColor">@color/home_more_btn_color</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="ScrollbarStyle">
+        <item name="android:scrollbarAlwaysDrawHorizontalTrack">true</item>
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbHorizontal">@color/dark_gray</item>
+        <item name="android:scrollbarTrackHorizontal">@color/indicator_gray</item>
+        <item name="android:scrollbarSize">3dp</item>
     </style>
 
 </resources>

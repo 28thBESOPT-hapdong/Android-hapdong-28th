@@ -130,157 +130,241 @@
             </com.google.android.material.tabs.TabLayout>
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/vp2_small"
+                android:id="@+id/project_pager"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="360:466"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/middle_tab" />
 
-            <View
-                android:id="@+id/view"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/indicator"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/ic_launcher_background"
-                app:layout_constraintDimensionRatio="133:42"
+                android:layout_height="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/project_pager"
+                app:tabBackground="@drawable/background_indicator_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"
+                app:tabPaddingEnd="19dp"
+                app:tabPaddingStart="19dp" />
+
+            <!-- 공개예정 프로젝트 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/upcoming_project_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/vp2_small"
-                app:layout_constraintWidth_percent="0.37" />
+                app:layout_constraintTop_toBottomOf="@id/indicator">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/home_title1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view">
-
-                <TextView
-                    android:id="@+id/home_text1"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/upcoming_project_title_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/home_title1"
-                    android:theme="@style/HomeTitleStyle"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/upcoming_project_title"
+                        style="@style/HomeTitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upcoming_project_title"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/arrow_24_px"
+                        app:layout_constraintBottom_toBottomOf="@id/upcoming_project_title"
+                        app:layout_constraintLeft_toRightOf="@id/upcoming_project_title"
+                        app:layout_constraintTop_toTopOf="@id/upcoming_project_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_upcoming_project"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/arrow_24_px"
-                    app:layout_constraintBottom_toBottomOf="@id/home_text1"
-                    app:layout_constraintLeft_toRightOf="@id/home_text1"
-                    app:layout_constraintTop_toTopOf="@id/home_text1" />
+                    android:layout_marginTop="12dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/upcoming_project_title_container"
+                    app:spanCount="2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/upcoming_project_btn"
+                    style="@style/HomeButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="11dp"
+                    android:text="@string/upcoming_project_btn"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_upcoming_project" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv1"
+            <!-- 진행중인 기획전 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/exhibition_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/home_title1" />
-
-            <Button
-                android:id="@+id/home_btn1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="11dp"
-                android:text="@string/home_btn_text1"
+                android:layout_marginTop="32dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv1" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/home_title2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_btn1">
+                app:layout_constraintTop_toBottomOf="@id/upcoming_project_container">
 
                 <TextView
-                    android:id="@+id/home_text2"
+                    android:id="@+id/title_exhibition"
+                    style="@style/HomeTitleStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/home_title2"
-                    android:theme="@style/HomeTitleStyle"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/exhibition_title"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/arrow_24_px"
-                    app:layout_constraintBottom_toBottomOf="@id/home_text2"
-                    app:layout_constraintLeft_toRightOf="@id/home_text2"
-                    app:layout_constraintTop_toTopOf="@id/home_text2" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/home_title2" />
-
-            <Button
-                android:id="@+id/home_btn2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="11dp"
-                android:text="@string/home_btn_text2"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv2" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/home_title3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_btn2">
-
-                <TextView
-                    android:id="@+id/home_text3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_title3"
-                    android:theme="@style/HomeTitleStyle"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_exhibition"
+                    style="@style/ScrollbarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="11dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/arrow_24_px"
-                    app:layout_constraintBottom_toBottomOf="@id/home_text3"
-                    app:layout_constraintLeft_toRightOf="@id/home_text3"
-                    app:layout_constraintTop_toTopOf="@id/home_text3" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_exhibition"
+                    tools:listitem="@layout/item_home_exhibition" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv3"
+            <!-- 인기 추천 프로젝트 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/popular_project_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/home_title3" />
-
-            <Button
-                android:id="@+id/home_btn3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="11dp"
-                android:text="@string/home_btn_text3"
+                android:layout_marginTop="50dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv3" />
+                app:layout_constraintTop_toBottomOf="@id/exhibition_container">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/popular_project_title_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/popular_project_title"
+                        style="@style/HomeTitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popular_project_title"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/arrow_24_px"
+                        app:layout_constraintBottom_toBottomOf="@id/popular_project_title"
+                        app:layout_constraintLeft_toRightOf="@id/popular_project_title"
+                        app:layout_constraintTop_toTopOf="@id/popular_project_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_popular_project"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/popular_project_title_container"
+                    app:spanCount="2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/popular_project_btn"
+                    style="@style/HomeButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="11dp"
+                    android:text="@string/popular_project_btn"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_popular_project" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 신규 추천 프로젝트 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/new_project_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/popular_project_container">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/new_project_title_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/new_project_title"
+                        style="@style/HomeTitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/new_project_title"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/arrow_24_px"
+                        app:layout_constraintBottom_toBottomOf="@id/new_project_title"
+                        app:layout_constraintLeft_toRightOf="@id/new_project_title"
+                        app:layout_constraintTop_toTopOf="@id/new_project_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_new_project"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/new_project_title_container"
+                    app:spanCount="2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/new_project_btn"
+                    style="@style/HomeButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="11dp"
+                    android:text="@string/new_project_btn"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_new_project" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavi.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> navigateHome()
-                R.id.menu_search -> navigateSearch("menu")
+                R.id.menu_search -> navigateSearch("bottom")
             }
             true
         }
