@@ -14,12 +14,10 @@ import com.example.android_hapdong_28th.main.MainActivity
 import com.example.android_hapdong_28th.main.home.adapter.HomeBannerAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeExhibitionAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeProjectAdapter
-import com.example.android_hapdong_28th.main.home.adapter.HomeSmallPager2Adapter
-import com.example.android_hapdong_28th.main.home.data.HomeBannerData
-import com.example.android_hapdong_28th.main.home.data.HomeExhibitionData
-import com.example.android_hapdong_28th.main.home.data.HomeProjectData
-
+import com.example.android_hapdong_28th.main.home.adapter.HomeProjectPagerAdapter
+import com.example.android_hapdong_28th.main.home.data.*
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.concurrent.timer
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -27,6 +25,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var bannerViewPager: ViewPager
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
+
+    private var homeDataSource: HomeDataSource = LocalHomeDataSource()
 
     private lateinit var homeBannerAdapter: HomeBannerAdapter
     private lateinit var homeUpcomingProjectAdapter: HomeProjectAdapter
@@ -49,6 +49,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         configureMainBanner()
         configureMiddleTab()
         configureProjectPager()
+        configureIndicator(binding)
         configureProjectList()
         configureExhibitionList()
         configureNavigation()
@@ -82,7 +83,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun configureMainBanner() {
-        homeBannerAdapter = HomeBannerAdapter(bannerList)
+        homeBannerAdapter = HomeBannerAdapter(homeDataSource.fetchBannerItems())
         binding.banner.adapter = homeBannerAdapter
         homeBannerAdapter.notifyDataSetChanged()
 
@@ -126,23 +127,26 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun configureProjectPager() {
-        binding.vp2Small.apply {
-            adapter = HomeSmallPager2Adapter(this@HomeFragment)
+        binding.projectPager.apply {
+            adapter = HomeProjectPagerAdapter(this@HomeFragment)
             isSaveEnabled = false
-            isUserInputEnabled = false
         }
     }
 
+    private fun configureIndicator(binding: FragmentHomeBinding) {
+        TabLayoutMediator(binding.indicator, binding.projectPager) { tab, position ->  }.attach()
+    }
+
     private fun configureProjectList() {
-        homeUpcomingProjectAdapter = HomeProjectAdapter(upcomingProjectList)
+        homeUpcomingProjectAdapter = HomeProjectAdapter(homeDataSource.fetchProjectItems())
         binding.rvUpcomingProject.adapter = homeUpcomingProjectAdapter
         homeUpcomingProjectAdapter.notifyDataSetChanged()
 
-        homePopularProjectAdapter = HomeProjectAdapter(popularProjectList)
+        homePopularProjectAdapter = HomeProjectAdapter(homeDataSource.fetchProjectItems())
         binding.rvPopularProject.adapter = homePopularProjectAdapter
         homePopularProjectAdapter.notifyDataSetChanged()
 
-        homeNewProjectAdapter = HomeProjectAdapter(newProjectList)
+        homeNewProjectAdapter = HomeProjectAdapter(homeDataSource.fetchProjectItems())
         binding.rvNewProject.adapter = homeNewProjectAdapter
         homeNewProjectAdapter.notifyDataSetChanged()
     }
@@ -184,17 +188,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        val bannerList = MutableList<HomeBannerData>(4) { i ->
-            HomeBannerData(
-                "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                "Main Banner\nTitle ${i + 1}",
-                "Content ${i + 1}"
-            )
-        }
-
-        val upcomingProjectList = MutableList<HomeProjectData>(8) { i ->
+        val projectListForPager = MutableList<HomeProjectData>(12) { i ->
             HomeProjectData(
-                "https://cdn.pixabay.com/photo/2020/06/06/06/44/new-york-5265414__480.jpg",
+                "https://cdn.pixabay.com/photo/2014/05/07/06/44/cat-339400__480.jpg",
                 "Category${i + 1}  |  ${i + 1}", "Upcoming Project\nTitle ${i + 1}", (i + 1) * 100
             )
         }
@@ -204,20 +200,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 "https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_1280.jpg",
                 "Exhibition Title ${i + 1}", (i + 1) * 100,
                 arrayListOf("#tag1", "#tag2", "#tag3", "#tag4")
-            )
-        }
-
-        val popularProjectList = MutableList<HomeProjectData>(8) { i ->
-            HomeProjectData(
-                "https://cdn.pixabay.com/photo/2021/01/21/15/54/books-5937716_1280.jpg",
-                "Category${i + 1}  |  ${i + 1}", "Popular Project\nTitle ${i + 1}", (i + 1) * 100
-            )
-        }
-
-        val newProjectList = MutableList<HomeProjectData>(8) { i ->
-            HomeProjectData(
-                "https://cdn.pixabay.com/photo/2021/01/29/14/41/wardrobe-5961193__480.jpg",
-                "Category${i + 1}  |  ${i + 1}", "New Project\nTitle ${i + 1}", (i + 1) * 100
             )
         }
     }
