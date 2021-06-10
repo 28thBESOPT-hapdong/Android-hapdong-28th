@@ -1,14 +1,10 @@
 package com.example.android_hapdong_28th.main.home.data
 
+import com.example.android_hapdong_28th.main.home.api.HomeBannerRes
+
 class LocalHomeDataSource : HomeDataSource {
-    override fun fetchBannerItems(): MutableList<HomeBannerData> {
-        return MutableList<HomeBannerData>(4) { i ->
-            HomeBannerData(
-                "https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_1280.jpg",
-                "Main Banner\nTitle ${i + 1}",
-                "Content ${i + 1}"
-            )
-        }
+    override fun fetchBannerItems(): MutableList<HomeBannerRes> {
+        TODO()
     }
 
     override fun fetchProjectItems(): MutableList<HomeProjectData> {

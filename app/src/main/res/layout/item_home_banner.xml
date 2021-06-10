@@ -73,8 +73,8 @@
 
             <TextView
                 android:id="@+id/size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="10dp"
+                android:layout_height="12dp"
                 android:fontFamily="@font/applesdgothicneo_regular"
                 android:text="@string/banner_size"
                 android:textColor="@color/white"

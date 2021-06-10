@@ -1,6 +1,7 @@
 package com.example.android_hapdong_28th.main.home.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +16,14 @@ import com.example.android_hapdong_28th.main.home.adapter.HomeBannerAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeExhibitionAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeProjectAdapter
 import com.example.android_hapdong_28th.main.home.adapter.HomeProjectPagerAdapter
+import com.example.android_hapdong_28th.main.home.api.HomeBannerRes
+import com.example.android_hapdong_28th.main.home.api.HomeBannerWrapperRes
+import com.example.android_hapdong_28th.main.home.api.RetrofitObject
 import com.example.android_hapdong_28th.main.home.data.*
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import retrofit2.Call
+import retrofit2.Response
 import kotlin.concurrent.timer
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -26,7 +32,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
 
-    private var homeDataSource: HomeDataSource = LocalHomeDataSource()
+    private var homeDataSource: HomeDataSource = RemoteHomeDataSource()
 
     private lateinit var homeBannerAdapter: HomeBannerAdapter
     private lateinit var homeUpcomingProjectAdapter: HomeProjectAdapter
@@ -83,9 +89,22 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun configureMainBanner() {
-        homeBannerAdapter = HomeBannerAdapter(homeDataSource.fetchBannerItems())
+        homeBannerAdapter = HomeBannerAdapter()
+        RetrofitObject.homeBannerService.fetchHomeBanner().enqueue(object : retrofit2.Callback<HomeBannerWrapperRes> {
+            override fun onResponse(
+                call: Call<HomeBannerWrapperRes>,
+                response: Response<HomeBannerWrapperRes>
+            ) {
+                if (response.isSuccessful) {
+                    homeBannerAdapter.submitItem(response.body()?.data?.bannerData as MutableList<HomeBannerRes>)
+                    Log.d("i'm successfully connect with server", response.body().toString())
+                }
+            }
+            override fun onFailure(call: Call<HomeBannerWrapperRes>, t: Throwable) {
+                Log.d("failed with connect server", t.message.toString())
+            }
+        })
         binding.banner.adapter = homeBannerAdapter
-        homeBannerAdapter.notifyDataSetChanged()
 
         //6초마다 자동슬라이드
         timer(period =  6000){
