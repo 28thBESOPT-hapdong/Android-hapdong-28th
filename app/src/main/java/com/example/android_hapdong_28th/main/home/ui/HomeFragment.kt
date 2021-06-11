@@ -23,6 +23,7 @@ import com.example.android_hapdong_28th.main.home.data.*
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import kotlin.concurrent.timer
 
@@ -31,8 +32,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var bannerViewPager: ViewPager
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding ?: error("View를 참조하기 위해 binding이 초기화되지 않았습니다.")
-
-    private var homeDataSource: HomeDataSource = RemoteHomeDataSource()
 
     private lateinit var homeBannerAdapter: HomeBannerAdapter
     private lateinit var homeUpcomingProjectAdapter: HomeProjectAdapter
@@ -157,23 +156,111 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun configureProjectList() {
-        homeUpcomingProjectAdapter = HomeProjectAdapter(homeDataSource.fetchProjectItems())
+        homeUpcomingProjectAdapter = HomeProjectAdapter(requireContext())
         binding.rvUpcomingProject.adapter = homeUpcomingProjectAdapter
-        homeUpcomingProjectAdapter.notifyDataSetChanged()
+        getServerUpcomingProjectData()
 
-        homePopularProjectAdapter = HomeProjectAdapter(homeDataSource.fetchProjectItems())
+        homePopularProjectAdapter = HomeProjectAdapter(requireContext())
         binding.rvPopularProject.adapter = homePopularProjectAdapter
-        homePopularProjectAdapter.notifyDataSetChanged()
+        getServerPopularProjectData()
 
-        homeNewProjectAdapter = HomeProjectAdapter(homeDataSource.fetchProjectItems())
+        homeNewProjectAdapter = HomeProjectAdapter(requireContext())
         binding.rvNewProject.adapter = homeNewProjectAdapter
-        homeNewProjectAdapter.notifyDataSetChanged()
+        getServerNewProjectData()
     }
 
     private fun configureExhibitionList() {
-        homeExhibitionAdapter = HomeExhibitionAdapter(exhibitionList)
+        homeExhibitionAdapter = HomeExhibitionAdapter(requireContext())
         binding.rvExhibition.adapter = homeExhibitionAdapter
-        homeExhibitionAdapter.notifyDataSetChanged()
+        getServerExhibitionData()
+    }
+
+    private fun getServerUpcomingProjectData() {
+        val call: Call<ResponseHomeProject> = RetrofitObject.TUMBLBUG_SERVICE.getHomeProject()
+        call.enqueue(object : Callback<ResponseHomeProject> {
+            override fun onResponse(
+                call: Call<ResponseHomeProject>,
+                response: Response<ResponseHomeProject>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        homeUpcomingProjectAdapter.projectList = it.data.editor
+                        homeUpcomingProjectAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseHomeProject>, t: Throwable) {
+                Log.d("tag", "t.localizedMessage!!")
+            }
+
+        })
+    }
+
+    private fun getServerPopularProjectData() {
+        val call: Call<ResponseHomeProject> = RetrofitObject.TUMBLBUG_SERVICE.getHomeProject()
+        call.enqueue(object : Callback<ResponseHomeProject> {
+            override fun onResponse(
+                call: Call<ResponseHomeProject>,
+                response: Response<ResponseHomeProject>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        homePopularProjectAdapter.projectList = it.data.editor
+                        homePopularProjectAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseHomeProject>, t: Throwable) {
+                Log.d("tag", "t.localizedMessage!!")
+            }
+
+        })
+    }
+
+    private fun getServerNewProjectData() {
+        val call: Call<ResponseHomeProject> = RetrofitObject.TUMBLBUG_SERVICE.getHomeProject()
+        call.enqueue(object : Callback<ResponseHomeProject> {
+            override fun onResponse(
+                call: Call<ResponseHomeProject>,
+                response: Response<ResponseHomeProject>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        homeNewProjectAdapter.projectList = it.data.editor
+                        homeNewProjectAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseHomeProject>, t: Throwable) {
+                Log.d("tag", "t.localizedMessage!!")
+            }
+
+        })
+    }
+
+    private fun getServerExhibitionData() {
+        val call: Call<ResponseHomeExhibition> = RetrofitObject.TUMBLBUG_SERVICE.getHomeExhibition()
+        call.enqueue(object : Callback<ResponseHomeExhibition> {
+            override fun onResponse(
+                call: Call<ResponseHomeExhibition>,
+                response: Response<ResponseHomeExhibition>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        homeExhibitionAdapter.exhibitionList = it.data.exhibition
+                        homeExhibitionAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseHomeExhibition>, t: Throwable) {
+                Log.d("tag", "t.localizedMessage!!")
+            }
+
+        })
     }
 
     private fun configureNavigation() {
@@ -204,22 +291,5 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        val projectListForPager = MutableList<HomeProjectData>(12) { i ->
-            HomeProjectData(
-                "https://cdn.pixabay.com/photo/2014/05/07/06/44/cat-339400__480.jpg",
-                "Category${i + 1}  |  ${i + 1}", "Upcoming Project\nTitle ${i + 1}", (i + 1) * 100
-            )
-        }
-
-        val exhibitionList = MutableList<HomeExhibitionData>(4) { i ->
-            HomeExhibitionData(
-                "https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_1280.jpg",
-                "Exhibition Title ${i + 1}", (i + 1) * 100,
-                arrayListOf("#tag1", "#tag2", "#tag3", "#tag4")
-            )
-        }
     }
 }
