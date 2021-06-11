@@ -6,7 +6,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitObject {
-    private const val BASE_URL = "https://api.github.com/"
+    private const val BASE_URL = "http://3.35.49.237:5000/"
+
     private fun provideLoggingInterceptor() =
         HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
 
@@ -20,4 +21,6 @@ object RetrofitObject {
     }
 
     val TUMBLBUG_SERVICE = provideRetrofitObject().create(TumblbugService::class.java)
+
+    val homeBannerService = provideRetrofitObject().create(HomeBannerService::class.java)
 }
