@@ -37,7 +37,31 @@
         android:textSize="9sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_container"
-        tools:text="의류  |  포인트랩" />
+        tools:text="의류" />
+
+    <TextView
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_regular"
+        android:text="  |  "
+        android:textColor="@color/right_gray"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@id/category"
+        app:layout_constraintLeft_toRightOf="@id/category"
+        app:layout_constraintTop_toTopOf="@id/category" />
+
+    <TextView
+        android:id="@+id/writer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_regular"
+        android:textColor="@color/right_gray"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@id/category"
+        app:layout_constraintLeft_toRightOf="@id/divider"
+        app:layout_constraintTop_toTopOf="@id/category"
+        tools:text="포인트랩" />
 
     <TextView
         android:id="@+id/title"
