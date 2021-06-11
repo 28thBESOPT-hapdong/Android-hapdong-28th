@@ -1,5 +1,6 @@
 package com.example.android_hapdong_28th.main.home.api
 
+import com.example.android_hapdong_28th.main.search.api.SearchService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,4 +24,5 @@ object RetrofitObject {
     val TUMBLBUG_SERVICE = provideRetrofitObject().create(TumblbugService::class.java)
 
     val homeBannerService = provideRetrofitObject().create(HomeBannerService::class.java)
+    val searchService = provideRetrofitObject().create(SearchService::class.java)
 }
