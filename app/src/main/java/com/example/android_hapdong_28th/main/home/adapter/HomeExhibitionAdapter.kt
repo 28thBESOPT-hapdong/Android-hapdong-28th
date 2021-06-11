@@ -1,14 +1,18 @@
 package com.example.android_hapdong_28th.main.home.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android_hapdong_28th.databinding.ItemHomeExhibitionBinding
+import com.example.android_hapdong_28th.main.home.data.Exhibition
 import com.example.android_hapdong_28th.main.home.data.HomeExhibitionData
 
-class HomeExhibitionAdapter(private val exhibitionList: MutableList<HomeExhibitionData>) :
+class HomeExhibitionAdapter(private val context: Context) :
     RecyclerView.Adapter<HomeExhibitionAdapter.HomeExhibitionViewHolder>() {
+
+    var exhibitionList = listOf<Exhibition>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeExhibitionViewHolder {
         val binding =
@@ -25,14 +29,15 @@ class HomeExhibitionAdapter(private val exhibitionList: MutableList<HomeExhibiti
     class HomeExhibitionViewHolder(
         private val binding: ItemHomeExhibitionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(exhibitionData: HomeExhibitionData) {
+        fun onBind(exhibitionData: Exhibition) {
             Glide.with(binding.root).load(exhibitionData.image).into(binding.image)
             binding.title.text = exhibitionData.title
-            binding.projectCount.text = exhibitionData.count.toString()
-            binding.tag1.text = exhibitionData.tag[0]
-            binding.tag2.text = exhibitionData.tag[1]
-            binding.tag3.text = exhibitionData.tag[2]
-            binding.tag4.text = exhibitionData.tag[3]
+            binding.projectCount.text = exhibitionData.num.toString()
+            val tag = exhibitionData.tags[0].split(",")
+            binding.tag1.text = "#${tag[0]}"
+            binding.tag2.text = "#${tag[1]}"
+            binding.tag3.text = "#${tag[2]}"
+            binding.tag4.text = "#${tag[3]}"
         }
     }
 }

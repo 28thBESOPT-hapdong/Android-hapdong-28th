@@ -34,7 +34,6 @@ class HomeProjectAdapter(private val context: Context) :
             binding.writer.text = projectData.writer
             binding.title.text = projectData.title
             binding.value.text = "${projectData.percent}% 달성"
-//                if (projectData.kind == "editor") "${projectData.percent}% 달성" else "${projectData.value}"
         }
     }
 }
